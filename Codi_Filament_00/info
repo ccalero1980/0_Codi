@@ -1,0 +1,14 @@
+Number of steps   = 1000
+Time-step         = 1.000000e-07
+Bending modulus   = 3.003571e+01
+Equilibrium angle = 0.000000e+00
+Bond length       = 3.448276e-02
+Tolerance         = 1.000000e-08
+hydr radius       = 1.034483e-02
+Friction gamma    = 1.000000e+02
+Frequency         = 6.283185e+04
+Peak torque       = 0.000000e+00
+Sperm Number gamma= 8.903176e+00
+tinercia = 1.000000e-02
+Fmax = 3.448276e+07
+Oseen 

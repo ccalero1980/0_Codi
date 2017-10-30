@@ -1,0 +1,9 @@
+#!/bin/bash
+
+START=$(date +%s)
+./filament bend
+END=$(date +%s)
+DIFF=$(( $END - $START ))
+echo temps: $DIFF
+
+

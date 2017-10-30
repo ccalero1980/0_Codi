@@ -1,0 +1,22 @@
+./straight30  : file name
+./       : output dir
+1000            : number of cycles
+1e-7          : dt
+1          : bending modulus
+0.001         : mass
+0.1           : gamma
+0.3           : hydr radius (in bond lengths)
+1.0           : gamma head
+0.0           : equilibrium angle
+1.0e-8        : constraint tolerance
+0.0             : amplitude of quadrapole
+1000         : steps in  cycles
+1.25          : wave length
+0             : skip left
+0             : skip right;
+100         : output configuration  frequency
+300           : imposed FM displacement
+1		: Fx
+1		: Fz
+1	      : Oseen 
+0	      : Blake
