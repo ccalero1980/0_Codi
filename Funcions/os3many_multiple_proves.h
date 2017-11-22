@@ -113,6 +113,20 @@ void  Torque_Bfield_2filaments( vec_s ,
            vec_s  *,
            param_s,
            vec_s);
+
+void  Torque_Bfield_2filamentsXY( vec_s ,
+           vec_s  ,
+           vec_s  ,
+           vec_s  *,
+           param_s,
+           vec_s);
+
+void  Torque_Bfield_2filaments_general( vec_s ,
+           vec_s  ,
+           vec_s  ,
+           vec_s  *,
+           param_s,
+           vec_s);
 /* Bending force routine
 Compute bending forces. 
 It calls angle_force
@@ -242,6 +256,8 @@ void   verlet_pt2_2filaments( vec_s *,
                    param_s );
 
 void   verlet_pt2_2filaments_rotacio( vec_s *,
+                   vec_s *,
+                   vec_s *,
                    vec_s *,
                    vec_s *,
                    vec_s *,

@@ -65,6 +65,89 @@ void  Torque_Bfield_2filaments( vec_s  r1,
 
 /* ######################################################################### */
 
+void  Torque_Bfield_2filaments_general( vec_s  r1,
+           vec_s  r2,
+           vec_s  m2,
+           vec_s  *f_Btorque,
+           param_s params,
+           vec_s Bfield)
+/* ######################################################################### */
+{
+  float r21x, r21y, r21z, Torquex, Torquey, Torquez; 
+  vec_s res;  
+
+
+  f_Btorque[0].x += 0.0;
+  f_Btorque[0].y += 0.0;
+  f_Btorque[0].z += 0.0;
+
+  r21x =  (r2.x - r1.x)/2.0;
+  r21y =  (r2.y - r1.y)/2.0;
+  r21z =  (r2.z - r1.z)/2.0;
+
+
+
+  Torquex   =  (Bfield.z*m2.y - Bfield.y*m2.z); 
+
+if(r21y*r21y + r21z*r21z != 0.0){
+  f_Btorque[0].x += 0.0;
+  f_Btorque[0].y += -0.5*r21z*Torquex/(r21y*r21y + r21z*r21z);
+  f_Btorque[0].z += 0.5*r21y*Torquex/(r21y*r21y + r21z*r21z);}
+
+
+
+
+  Torquey   =  (Bfield.x*m2.z - Bfield.z*m2.x); 
+if(r21x*r21x + r21z*r21z != 0.0){
+  f_Btorque[0].x += 0.5*r21z*Torquey/(r21x*r21x + r21z*r21z);
+  f_Btorque[0].y += 0.0;
+  f_Btorque[0].z += -0.5*r21x*Torquey/(r21x*r21x + r21z*r21z);}
+
+
+
+  Torquez   =  (Bfield.y*m2.x - Bfield.x*m2.y);   
+if(r21x*r21x + r21y*r21y != 0.0){
+  f_Btorque[0].x += -0.5*r21y*Torquez/(r21x*r21x + r21y*r21y);
+  f_Btorque[0].y += 0.5*r21x*Torquez/(r21x*r21x + r21y*r21y);
+  f_Btorque[0].z += 0.0;}
+
+
+
+
+  f_Btorque[0].x /= params.mass1;
+  f_Btorque[0].y /= params.mass1;
+  f_Btorque[0].z /= params.mass1;
+  
+}
+
+/* ######################################################################### */
+
+void  Torque_Bfield_2filamentsXY( vec_s  r1,
+           vec_s  r2,
+           vec_s  m2,
+           vec_s  *f_Btorque,
+           param_s params,
+           vec_s Bfield)
+/* ######################################################################### */
+{
+  float r21x, r21y, Torque; 
+  vec_s res;  
+
+  Torque   =  (Bfield.x*m2.y - Bfield.y*m2.x); // Suposo que el camp magnetic es al pla XY  
+
+  r21x = - (r2.x - r1.x)/2.0;
+  r21y =  (r2.y - r1.y)/2.0;
+
+  f_Btorque[0].x = 0.5*r21y*Torque/((params.b_l/2.)*(params.b_l/2.));
+  f_Btorque[0].y = 0.5*r21x*Torque/((params.b_l/2.)*(params.b_l/2.));
+
+  f_Btorque[0].x /= params.mass1;
+  f_Btorque[0].y /= params.mass1;
+  
+}
+
+/* ######################################################################### */
+
 vec_s  Binduction( vec_s  r0f,
            vec_s  m2, 
            param_s params)
